@@ -1,0 +1,44 @@
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="wallet.mapper.LabMapper">
+    <select id="findList" resultType="lab">
+        SELECT 
+            id,
+
+            userName
+        FROM lab
+    </select>
+    
+    
+    <select id="findOneById" parameterType="long" resultType="lab">
+        SELECT 
+            id,
+
+            userName
+        FROM lab
+        WHERE id = #{id}
+    </select>
+    
+    <insert id="save" parameterType="lab" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO lab (
+                        userName
+            ) 
+        VALUES (
+                        #{ userName }
+            )
+    </insert>
+    
+    <update id="update" parameterType="lab">
+        UPDATE reservation
+        SET 
+
+            userName = #{ userName }
+        WHERE id = #{id}
+    </update>
+    
+    <delete id = "deleteById" parameterType="long">
+        DELETE FROM lab WHERE id = #{id}
+    </delete>
+</mapper>

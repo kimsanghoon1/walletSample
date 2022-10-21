@@ -1,0 +1,52 @@
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="wallet.mapper.PointMapper">
+    <select id="findList" resultType="point">
+        SELECT 
+            id,
+
+            userName,
+
+            point
+        FROM point
+    </select>
+    
+    
+    <select id="findOneById" parameterType="long" resultType="point">
+        SELECT 
+            id,
+
+            userName,
+
+            point
+        FROM point
+        WHERE id = #{id}
+    </select>
+    
+    <insert id="save" parameterType="point" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO point (
+                        userName,
+                        point
+            ) 
+        VALUES (
+                        #{ userName },
+                        #{ point }
+            )
+    </insert>
+    
+    <update id="update" parameterType="point">
+        UPDATE reservation
+        SET 
+
+            userName = #{ userName },
+
+            point = #{ point }
+        WHERE id = #{id}
+    </update>
+    
+    <delete id = "deleteById" parameterType="long">
+        DELETE FROM point WHERE id = #{id}
+    </delete>
+</mapper>

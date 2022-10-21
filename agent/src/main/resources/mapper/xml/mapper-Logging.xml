@@ -1,0 +1,31 @@
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="wallet.mapper.LoggingMapper">
+    <select id="findList" resultType="logging">
+        SELECT 
+            id,
+
+            timestamp,
+
+            eventName,
+
+            serviceName
+                    FROM logging
+    </select>
+    
+    
+    <select id="findOneById" parameterType="long" resultType="logging">
+        SELECT 
+            id,
+
+            timestamp,
+
+            eventName,
+
+            serviceName
+                    FROM logging
+        WHERE id = #{id}
+    </select>
+    
+</mapper>
